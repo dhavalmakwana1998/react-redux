@@ -1,7 +1,12 @@
 import "./App.css";
 import Counter from "./component/counter";
 import { useDispatch, useSelector } from "react-redux";
-import { incNumber, decNumber } from "./actions/index";
+import {
+  incNumber,
+  decNumber,
+  decNumberBy,
+  incNumberBy,
+} from "./actions/index";
 
 function App() {
   const state = useSelector((state) => state.changeNumber);
@@ -10,17 +15,25 @@ function App() {
     <div className="App">
       <h3>from home component : {state}</h3>
       <Counter />
+      <button style={{ margin: "10px" }} onClick={() => dispatch(decNumber())}>
+        Decrement -
+      </button>
+      <button style={{ margin: "10px" }} onClick={() => dispatch(incNumber())}>
+        Increment +
+      </button>
+      <br></br>
+
       <button
-        style={{ marginRight: "10px" }}
-        onClick={() => dispatch(incNumber())}
+        style={{ margin: "10px" }}
+        onClick={() => dispatch(decNumberBy())}
       >
-        Increment
+        - Decrement by 5
       </button>
       <button
-        style={{ marginLeft: "10px" }}
-        onClick={() => dispatch(decNumber())}
+        style={{ margin: "10px" }}
+        onClick={() => dispatch(incNumberBy())}
       >
-        Decrement
+        + Increment by 5
       </button>
     </div>
   );
